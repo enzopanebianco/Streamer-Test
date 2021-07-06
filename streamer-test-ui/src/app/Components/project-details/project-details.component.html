@@ -1,0 +1,31 @@
+<div style="gap:10px" class="container d-flex flex-column">
+    <img  src={{project.image}} class="img-responsive img-project img-thumbnail" alt="imagem do projeto">
+    <div class="d-flex flex-row justify-content-between">
+        <div>
+            <h1>{{project.name}}</h1>
+            <h3 class="text-primary">{{project.course.name}}</h3>
+        </div>
+        <div style="gap:20px" class="d-flex align-items-center">
+            <button class="btn btn-primary" (click)="changeMenu()" type="button"> Editar</button>
+            <a routerLink="/">Voltar</a>
+        </div>
+        
+    </div>
+    <div>
+        <h6>Porque nós iremos aprender</h6>
+        <p class="lead">{{project.why}}</p>
+    </div>
+    <div>
+        <h6>O que</h6>
+        <p class="lead">{{project.what}}</p>
+    </div>
+    <div>
+        <h6>O que nós iremos fazer</h6>
+        <p class="lead">{{project.whatWillWeDo}}</p>
+    </div>
+    <div>
+        <h6>Status</h6>
+        <p class="lead" *ngIf="project.projectStatus==0">Em Desenvolvimento</p>
+        <p class="lead" *ngIf="project.projectStatus==1">Publicado</p>
+    </div>
+</div>

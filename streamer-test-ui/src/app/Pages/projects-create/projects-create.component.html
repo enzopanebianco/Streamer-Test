@@ -1,0 +1,58 @@
+<div class="container">
+    <div>
+        <h1>Cadastrar Projeto</h1>
+        <a routerLink="/">Voltar</a>
+    </div>
+    <form #createForm="ngForm" (ngSubmit)="createProject(createForm)"
+        class="d-flex flex-column justify-content-between">
+        <div class="d-flex flex-row justify-content-around">
+            <div class="flex-column">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input required class="form-control" name="name" #name="ngModel" [(ngModel)]="project.name"
+                        id="name">
+                </div>
+                <div class="form-group">
+                    <label>Curso</label>
+                    <select class="form-control" required name="courseId" #courseId="ngModel"
+                        [(ngModel)]="project.courseId">
+                        <option *ngFor="let l of listCourses" [ngValue]="l.id">{{l.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="image">Imagem</label>
+                    <input id="image" name="image" [(ngModel)]="project.image" #image="ngModel" type="text"
+                        class="form-control">
+                </div>
+            </div>
+            <div class="flex-column">
+                <div class="form-group">
+                    <label for="why">Porque nós iremos aprender</label>
+                    <input class="form-control" name="why" #why="ngModel" [(ngModel)]="project.why" id="why">
+                </div>
+                <div class="form-group">
+                    <label for="what">O que</label>
+                    <input class="form-control" name="what" #what="ngModel" [(ngModel)]="project.what" id="what">
+                </div>
+                <div class="form-group">
+                    <label for="whatWillWeDo">O que nós iremos fazer</label>
+                    <input class="form-control" name="whatWillWeDo" #whatWillWeDo="ngModel"
+                        [(ngModel)]="project.whatWillWeDo" id="whatWillWeDo">
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select required class="form-control" name="projectStatus" (ngModel)="project.projectStatus" ngModel
+                        #projectStatus="ngModel">
+                        <option *ngFor="let l of status" [value]='l.id'>{{l.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-dark">Cadastrar</button>
+        </div>
+    </form>
+    <div class="bg-danger p-3 mb-2 error text-white" *ngIf="msgError">
+        <p>Você esqueceu de digitar em alguns campos requiridos</p>
+    </div>
+</div>

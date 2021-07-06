@@ -1,0 +1,45 @@
+<div class="flex">
+    <div class="d-flex flex-column" style="gap:30px">
+        <h1>Projetos</h1>
+        <button routerLink="/create" class="btn btn-dark">Adicionar</button>
+    </div>
+    <div class="d-flex " style="gap: 30px;">
+        <select class="form-control" 
+        [(ngModel)]="courseId"
+         >
+            <option value="0" selected >Selecione um curso</option>
+            <option *ngFor="let course of courses" [value]="course.id">{{course.name}}</option>
+        </select>
+        <button class="btn btn-warning" (click)="listProjectsByCourseId()" >Procure pelo curso</button>
+        <button class="btn btn-info" (click)="listProjects()" >Listar Projetos</button>
+    </div>
+    <div class="center">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Porque</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ações</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="project-item" *ngFor="let project of projects">
+                    <td>{{project.id}}</td>
+                    <td class="name-project">{{project.name}}</td>
+                    <td>{{project.why}}</td>
+                    <td>{{project.course.name}}</td>
+                    <td *ngIf="project.projectStatus==0">Em Desenvolvimento</td>
+                    <td *ngIf="project.projectStatus==1">Publicado</td>
+                    <td class="d-flex justify-content-between">
+                        <a [routerLink]="['/list',project.id]">Editar</a>
+                        <a class="text-red" (click)="deleteProject(project.id)">Remover</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

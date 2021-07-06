@@ -1,0 +1,7 @@
+<!-- passa a função para os filhos e o objeto do projeto. -->
+<div *ngIf="!menuEdit">
+<app-project-details [changeMenu]="setMenuEdit" [project]="project" ></app-project-details>
+</div>
+<div *ngIf="menuEdit">
+<app-project-edit [changeMenu]="setMenuEdit" [project]="project" ></app-project-edit>
+</div>

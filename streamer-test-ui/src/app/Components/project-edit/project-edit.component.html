@@ -1,0 +1,32 @@
+<div style="gap:10px" class="container d-flex flex-column">
+    <img src={{project.image}} class="img-responsive img-thumbnail" alt="imagem do projeto">
+    <form #projectForm="ngForm" (ngSubmit)="update(projectForm)" class="flex-column justify-content-between">
+        <h1>Editar {{project.name}}</h1>
+        <div>
+            <div class="form-group flex-row d-flex">
+                <input class="form-control" name="name" #name="ngModel"  [(ngModel)]="project.name" id="name">
+            </div>
+
+            <div class="form-group">
+                <label for="why">Porque nós iremos aprender</label>
+                <input class="form-control" name="why" #why="ngModel" [(ngModel)]="project.why" id="why">
+            </div>
+            <div class="form-group">
+                <label for="what">O que</label>
+                <input class="form-control" name="what" #what="ngModel" [(ngModel)]="project.what" id="what">
+            </div>
+            <div class="form-group">
+                <label for="whatWillWeDo">O que nós iremos fazer</label>
+                <input class="form-control" name="whatWillWeDo" #whatWillWeDo="ngModel" [(ngModel)]="project.whatWillWeDo" id="whatWillWeDo">
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" name="projectStatus"
+                [(ngModel)]="project.projectStatus" ngModel #projectStatus="ngModel">
+                    <option *ngFor="let s of status"  [value]='s.id'>{{s.name}}</option>
+                </select>
+            </div>
+        </div>
+            <button class="btn btn-primary"type="submit"> Editar</button>
+    </form>
+</div>
