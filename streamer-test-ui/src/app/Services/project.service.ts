@@ -8,6 +8,7 @@ import { Project } from '../Models/Project';
 })
 export class ProjectService {
 
+//colocar o IP da máquina para ativar a Api.
   private readonly Api = "http://192.168.0.16:5000/api"
 
   constructor(private http:HttpClient) { }
